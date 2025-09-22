@@ -1,8 +1,0 @@
-
-(load "./widgets/volume_popup.yuck")
-
-(eww :style "./styles/volume.scss")
-
-(eww :windows [
-  (volume-window :widget volume_popup :monitor 0 :geometry (geometry :x "center" :y "10%" :width "auto" :height "auto"))
-])
