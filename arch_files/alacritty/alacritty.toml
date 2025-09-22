@@ -1,0 +1,19 @@
+[env]
+TERM = "xterm-256color"
+
+[font]
+normal = { family = "JetBrains Mono", style = "Regular" }
+size = 12
+
+[window]
+opacity = 0.88
+padding = { x = 8, y = 8 }
+dynamic_padding = false
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 112  # Set this to your desired width
+lines = 33     # Set this to your desired height
+
+[general]
+import = ["~/.config/alacritty/themes/catppuccin_mocha.toml"]
