@@ -13,6 +13,23 @@ vim.opt.rtp:prepend(lazypath)
 
 local lazy_config = require "configs.lazy"
 
+-- Auto-read files when changed externally
+vim.opt.autoread = true
+
+-- Trigger autoread more frequently by checking on various events
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  pattern = "*",
+  command = "checktime",
+})
+
+-- Optional: Get a notification when file is changed externally
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+  pattern = "*",
+  callback = function()
+    vim.notify("File changed on disk. Buffer reloaded.", vim.log.levels.WARN)
+  end,
+})
+
 -- load plugins
 require("lazy").setup({
   {
