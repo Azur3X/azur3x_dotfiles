@@ -12,24 +12,6 @@ return {
       require "configs.lspconfig"
     end,
   },
-
-  {
-    'chipsenkbeil/distant.nvim',
-    branch = 'v0.3',
-    lazy = false,
-    config = function()
-      require('distant'):setup {
-        -- Optional: configure settings
-        ['*'] = {
-          -- Use SSH by default
-          ssh = {
-            -- Can add default SSH options here
-          }
-        }
-      }
-    end
-  },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
