@@ -1,6 +1,7 @@
 require "nvchad.options"
 
 -- add yours here!
+vim.env.LANG = "en_US.UTF-8"
 
 local o = vim.o
 
