@@ -24,4 +24,7 @@ vim.g.clipboard = {
   cache_enabled = 0,
 }
 
+vim.ui.open = function(path)
+  vim.fn.jobstart({"xdg-open", path}, {detach = true})
+end
 -- o.cursorlineopt ='both' -- to enable cursorline!
