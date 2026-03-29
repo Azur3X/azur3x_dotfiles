@@ -1,7 +1,0 @@
-(defwidget volume_popup []
-  (box :class "volume-overlay" :orientation "horizontal"
-    (image :path (get "icon") :class "volume-icon")
-    (progress :class "volume-bar" :value (get "volume") :max 100)
-    (label :text "#{get 'volume'}%")
-  )
-)

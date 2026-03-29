@@ -23,3 +23,12 @@ autocmd('BufEnter', {
   end,
   desc = 'Auto insert mode when entering terminal'
 })
+
+
+vim.api.nvim_create_autocmd("FocusGained", {
+  callback = function()
+    package.loaded["caelestia_theme"] = nil
+    vim.cmd("silent! !rm -rf " .. vim.fn.stdpath("data") .. "/base46/")
+    require("base46").load_all_highlights()
+  end,
+})

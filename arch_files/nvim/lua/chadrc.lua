@@ -3,12 +3,10 @@
 -- Please read that file to know all available options :( 
 ---@type ChadrcConfig
 local M = {}
+local ok, caelestia = pcall(require, "caelestia_theme")
 M.base46 = {
-	theme = "onedark",
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+  theme = "onedark",
+  hl_override = ok and caelestia.overrides or {},
 }
 
 local raw = {
