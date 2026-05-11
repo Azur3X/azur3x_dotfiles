@@ -53,8 +53,8 @@ run_cmd() {
 				i3-msg exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
-			elif [[ "$XDG_CURRENT_DESKTOP" == 'wayfire' ]]; then
-                wayland-logout
+			elif [[ "$XDG_CURRENT_DESKTOP" == *ayfire* ]]; then
+                pkill wayfire
 			fi
 		fi
 	else
