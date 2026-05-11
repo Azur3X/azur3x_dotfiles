@@ -72,7 +72,6 @@ vim.lsp.config.clangd = {
     "--clang-tidy",
     "--header-insertion=iwyu",
     "--completion-style=detailed",
-    "--function-arg-placeholders",
     "--fallback-style=llvm",
   },
   filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
@@ -116,7 +115,18 @@ vim.lsp.config.pyright = {
   },
 }
 
+-- Setup jdtls for Java
+vim.lsp.config.jdtls = {
+  cmd = { "jdtls" },
+  filetypes = { "java" },
+  root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" },
+  capabilities = nvchad_lsp.capabilities,
+  on_attach = on_attach,
+  on_init = nvchad_lsp.on_init,
+}
+
 -- Enable the LSP servers
 vim.lsp.enable("hls")
 vim.lsp.enable("clangd")
 vim.lsp.enable("pyright")
+vim.lsp.enable("jdtls")

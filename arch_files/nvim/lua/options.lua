@@ -6,10 +6,15 @@ vim.env.LANG = "en_US.UTF-8"
 local o = vim.o
 
 -- Tab settings
-o.tabstop = 4      -- Number of spaces a <Tab> character displays as
-o.shiftwidth = 4   -- Number of spaces for each indent level
-o.softtabstop = 4  -- Number of spaces for <Tab> in insert mode
-o.expandtab = true -- Convert tabs to spaces
+o.tabstop = 4
+o.shiftwidth = 4
+o.softtabstop = 4
+o.expandtab = true
+
+-- Display
+o.relativenumber = true
+o.scrolloff = 8
+o.colorcolumn = "80"
 
 vim.g.clipboard = {
   name = 'wl-clipboard',

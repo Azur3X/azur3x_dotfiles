@@ -5,8 +5,14 @@
 local M = {}
 local ok, caelestia = pcall(require, "caelestia_theme")
 M.base46 = {
-  theme = "onedark",
-  hl_override = ok and caelestia.overrides or {},
+  theme = "azur3x",
+}
+
+M.ui = {
+  statusline = {
+    theme = "default",
+    separator_style = "round",
+  },
 }
 
 local raw = {
