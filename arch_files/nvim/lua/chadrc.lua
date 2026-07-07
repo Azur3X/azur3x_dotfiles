@@ -5,7 +5,7 @@
 local M = {}
 local ok, caelestia = pcall(require, "caelestia_theme")
 M.base46 = {
-  theme = "azur3x",
+  theme = "gruvbox",
 }
 
 M.ui = {
