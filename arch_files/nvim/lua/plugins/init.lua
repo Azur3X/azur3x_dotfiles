@@ -1,4 +1,14 @@
 return {
+{
+    "ThePrimeagen/vim-be-good",
+    event = "VeryLazy",
+    config = function()
+      vim.keymap.set({ "n", "i", "v" }, "<Up>", "<Nop>")
+      vim.keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>")
+      vim.keymap.set({ "n", "i", "v" }, "<Left>", "<Nop>")
+      vim.keymap.set({ "n", "i", "v" }, "<Right>", "<Nop>")
+    end,
+  },
   {
     "stevearc/conform.nvim",
     opts = require "configs.conform",
@@ -39,6 +49,12 @@ return {
           vim.keymap.set("i", "<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { buffer = true })
         end,
       })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "markdown", "tex", "text", "rst", "org" },
+        callback = function()
+          vim.opt_local.colorcolumn = ""
+        end,
+      })
     end,
   },
   {
@@ -51,43 +67,57 @@ return {
     end,
   },
   {
-  "3rd/image.nvim",
-  event = "VeryLazy",
-  opts = {
-    backend = "kitty",
-    integrations = {
-      markdown = {
-        enabled = true,
-        clear_in_insert_mode = false,
-        download_remote_images = true,
-        only_render_image_at_cursor = false,
+    "3rd/image.nvim",
+    event = "VeryLazy",
+    opts = {
+      backend = "kitty",
+      integrations = {
+        markdown = {
+          enabled = true,
+          clear_in_insert_mode = false,
+          download_remote_images = true,
+          only_render_image_at_cursor = false,
+        },
       },
+      max_width = 100,
+      max_height = 12,
+      max_height_window_percentage = math.huge,
+      max_width_window_percentage = math.huge,
+      window_overlap_clear_enabled = true,
     },
-    max_width = 100,
-    max_height = 12,
-    max_height_window_percentage = math.huge,
-    max_width_window_percentage = math.huge,
-    window_overlap_clear_enabled = true,
-  },
   },
   {
-  "MeanderingProgrammer/render-markdown.nvim",
-  ft = { "markdown" },
-  dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-  opts = {
-    latex = {
-      enabled = true,
-      converter = "latex2text",
-      highlight = "RenderMarkdownMath",
-      position = "above",
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    opts = {
+      latex = {
+        enabled = false, -- superseded by mdmath.nvim for real LaTeX rendering
+        converter = "latex2text",
+        highlight = "RenderMarkdownMath",
+        position = "above",
+      },
+      heading = { enabled = true },
+      code = { enabled = true },
     },
-    heading = { enabled = true },
-    code = { enabled = true },
   },
+  {
+    "Thiago4532/mdmath.nvim",
+    ft = "markdown",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    build = ":MdMath build",
+    opts = {
+      foreground = "Normal",
+      anticonceal = true,
+      hide_on_insert = true,
+      dynamic = true,
+      dynamic_scale = 0.8,
+      internal_scale = 0.8,
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "main",
+    branch = "master",
     build = ":TSUpdate",
     opts = nil,
     config = function()
