@@ -111,13 +111,13 @@ return {
       anticonceal = true,
       hide_on_insert = true,
       dynamic = true,
-      dynamic_scale = 0.8,
-      internal_scale = 0.8,
+      dynamic_scale = 1.0,
+      internal_scale = 1.2,
     },
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
     build = ":TSUpdate",
     opts = nil,
     config = function()
