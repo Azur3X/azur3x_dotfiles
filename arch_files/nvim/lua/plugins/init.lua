@@ -116,22 +116,27 @@ return {
       internal_scale = 1.2,
     },
   },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "main",
-    build = ":TSUpdate",
-    opts = nil,
-    config = function()
-      pcall(function()
-        dofile(vim.g.base46_cache .. "syntax")
-        dofile(vim.g.base46_cache .. "treesitter")
-      end)
-      require("nvim-treesitter").setup()
-      vim.api.nvim_create_autocmd("FileType", {
+    {
+  "nvim-treesitter/nvim-treesitter",
+  branch = "main",
+  lazy = false,
+  build = ":TSUpdate",
+  config = function()
+    pcall(function()
+      dofile(vim.g.base46_cache .. "syntax")
+      dofile(vim.g.base46_cache .. "treesitter")
+    end)
+
+    require("nvim-treesitter").install {
+      "c", "lua", "vim", "vimdoc", "query",
+      "markdown", "markdown_inline", "latex",
+    }
+       vim.api.nvim_create_autocmd("FileType", {
         callback = function(ev)
+          if ev.match == "tex" then return end
           pcall(vim.treesitter.start, ev.buf)
         end,
       })
-    end,
-  },
+  end,
+    },
 }
