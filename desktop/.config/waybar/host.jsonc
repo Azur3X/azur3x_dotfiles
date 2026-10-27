@@ -1,0 +1,4 @@
+{
+  "output": "DP-1",
+  "modules-right": ["custom/action-center", "tray", "cpu", "memory", "pulseaudio", "network", "custom/power"]
+}

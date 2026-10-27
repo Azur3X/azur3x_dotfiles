@@ -1,0 +1,68 @@
+{
+  "include": ["~/.config/waybar/host.jsonc"],
+  "layer": "top",
+  "position": "top",
+  "height": 28,
+  "spacing": 0,
+
+  "modules-left": ["custom/start"],
+  "modules-center": ["clock"],
+  // modules-right comes from host.jsonc
+
+  "custom/start": {
+    "format": "󰣇",
+    "on-click": "rofi -show drun",
+    "tooltip": false
+  },
+  "clock": {
+    "format": "{:%a %d %b  %H:%M}",
+    "tooltip-format": "{:%A %d %B %Y}",
+    "on-click": "eww active-windows | grep -q cal && eww close cal || eww open cal"
+  },
+  "custom/action-center": {
+    "format": "󰂚",
+    "tooltip": false,
+    "on-click": "if eww active-windows | grep -q example; then eww close example media-player; else eww open-many example media-player; fi"
+  },
+  "cpu": {
+    "format": "󰻠 {usage}%",
+    "interval": 5
+  },
+  "memory": {
+    "format": "󰍛 {used:0.1f}G",
+    "interval": 10
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 mute",
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
+    "on-click": "pavucontrol",
+    "tooltip": false
+  },
+  "network": {
+    "format-wifi": "󰤨 {essid}",
+    "format-ethernet": "󰈀 {ipaddr}",
+    "format-disconnected": "󰤭 offline",
+    "tooltip-format-wifi": "Signal: {signalStrength}%\nIP: {ipaddr}",
+    "on-right-click": "nm-connection-editor",
+    "interval": 5
+  },
+  "battery": {
+    "states": { "warning": 30, "critical": 15 },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip-format": "{timeTo}",
+    "interval": 30
+  },
+  "tray": {
+    "spacing": 8,
+    "icon-size": 14
+  },
+  "custom/power": {
+    "format": "󰐦",
+    "on-click": "wlogout -b 5",
+    "tooltip": false
+  }
+}
