@@ -16,8 +16,7 @@
   },
   "clock": {
     "format": "{:%a %d %b  %H:%M}",
-    "tooltip-format": "{:%A %d %B %Y}",
-    "on-click": "eww active-windows | grep -q cal && eww close cal || eww open cal"
+    "tooltip-format": "{:%A %d %B %Y}"
   },
   "custom/action-center": {
     "format": "󰂚",

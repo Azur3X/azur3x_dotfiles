@@ -1,160 +1,83 @@
-window {
-  background-color: transparent;
+$bg:      #141414;
+$bg-alt:  #1e1e1e;
+$surface: #262626;
+$fg:      #d5d4d0;
+$fg-dim:  #747474;
+$accent:  #7daad1;
+$sel:     #2a3744;
+$red:     #d0938d;
+$yellow:  #baa16e;
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  color: $fg;
 }
-.btn-on {
-    background: #8b0000;
-    transition: background 0.3s ease;
+
+window { background-color: transparent; }
+
+// ── Panels: same card style as rofi and mako ──
+.panel-style, .panel1-style, .panel2-style, .media-style {
+  background-color: $bg;
+  border: 2px solid $accent;
+  border-radius: 6px;
 }
-.btn-off {
-    background: #333;
-    transition: background 0.3s ease;
-}
-.btn-lef {
-	border-radius: 20px 2px 2px 20px;
-    min-width: 0px;
-    min-height: 0px;
-    padding: 0px 0px;
-}
-.btn-rig {
-	border-radius: 2px 20px 20px 2px;
-    min-width: 0px;
-    min-height: 0px;
-    padding: 0px 0px;
-}
-.btn-cn {
-	border-radius: 20px;
-    min-width: 0px;
-    min-height: 0px;
-    padding: 0px 0px;
-}
+.panel-style  { padding: 0; }
+.panel1-style { padding: 12px 18px; font-size: 16px; min-height: 200px; }
+.panel2-style { min-width: 320px; }
+
+.my-panel  { margin-top: 20px; margin-left: 0; }
+.my2-panel { margin-top: 0;    margin-left: 0; }
+.my3-panel { margin-top: 5px;  margin-left: 0; }
+
+.icon  { font-size: 20px; }
+.rover { font-size: 14px; }
+
+// ── Buttons ──
+.btn-on  { background: $accent;  transition: background 0.3s ease; label { color: $bg; } }
+.btn-off { background: $surface; transition: background 0.3s ease; }
+
+.btn-lef { border-radius: 20px 2px 2px 20px; min-width: 0; min-height: 0; padding: 0; }
+.btn-rig { border-radius: 2px 20px 20px 2px; min-width: 0; min-height: 0; padding: 0; }
+.btn-cn  { border-radius: 20px; min-width: 0; min-height: 0; padding: 0; }
+
 .btn-uni {
-	border-radius: 20px;
-    min-width: 20px;
-    min-height: 10px;
-    padding: 6px 6px;
-    background: #333;
+  border-radius: 20px;
+  min-width: 20px; min-height: 10px;
+  padding: 6px;
+  background: $surface;
 }
 .btn-win {
-	border-radius: 5px;
-    min-width: 20px;
-    min-height: 10px;
-    padding: 6px 6px;
-    background: transparent;
-    transition: background 0.3s ease;
+  border-radius: 5px;
+  min-width: 20px; min-height: 10px;
+  padding: 6px;
+  background: transparent;
+  transition: background 0.3s ease;
 }
-.btn-win:hover {
-	background: red;
-	transition: background 0.3s ease;
+.btn-win:hover { background: $sel; }
+
+// ── Sliders ──
+@mixin slider($fill) {
+  min-width: 200px;
+  trough    { background: $surface; border-radius: 10px; min-height: 4px; }
+  highlight { background: $fill;    border-radius: 10px; }
+  slider    { background: $fg; border-radius: 50%; min-width: 12px; min-height: 12px; }
 }
-.my-panel {
-    margin-top: 20px;
-    margin-left: 0px;
-}
-.my2-panel {
-    margin-top: 0px;
-    margin-left: 0px;
-}
-.my3-panel {
-    margin-top: 5px;
-    margin-left: 0px;
-}
-.panel-style {
-	border-radius: 10px;
-	font-family: "JetBrainsMono Nerd Font", monospace;
-	padding: 0px;
-	background-color: rgba(0, 0, 0, 0.9);
-	margin-bottom: 0px;
-}
-.panel1-style {
-  background: rgba(0, 0, 0, 0.9);
-  border-radius: 10px;
-  padding: 12px 18px;
-  font-family: "JetBrainsMono Nerd Font", monospace;
-  font-size: 16px;
-  min-height: 200px;
-}
-.icon {
-  font-family: "JetBrainsMono Nerd Font", monospace;
-  font-size: 20px;
-}
-.rover {
-  font-family: "JetBrainsMono Nerd Font", monospace;
-  font-size: 14px;
-}
-.panel2-style {
-  background: rgba(20, 20, 20, 0.9);
-  border-radius: 10px;
-  min-width: 320px;
-}
-scale.vol {
-    min-width: 200px;
-    trough {
-        background: #333;
-        border-radius: 10px;
-        min-height: 4px;
-    }
-    highlight {
-        background: linear-gradient(to right, #1a1a2e, #ff4444);
-        border-radius: 10px;
-    }
-    slider {
-        background: white;
-        border-radius: 50%;
-        min-width: 12px;
-        min-height: 12px;
-    }
-}
-scale.bri {
-    min-width: 200px;
-    trough {
-        background: #333;
-        border-radius: 10px;
-        min-height: 4px;
-    }
-    highlight {
-        background: linear-gradient(to right, #1a1a2e, #f5c518);
-        border-radius: 10px;
-    }
-    slider {
-        background: white;
-        border-radius: 50%;
-        min-width: 12px;
-        min-height: 12px;
-    }
-}
-scale.vol-muted {
-    min-width: 200px;
-    trough {
-        background: #444;
-        border-radius: 10px;
-        min-height: 4px;
-    }
-    highlight {
-        background: #444;
-        border-radius: 10px;
-    }
-    slider {
-        background: #222;
-        border: 2px solid #000;
-        border-radius: 50%;
-        min-width: 6px;
-        min-height: 6px;
-    }
-}
-.media-style {
-    background: rgba(0, 0, 0, 0.9);
-    border-radius: 10px;
-}
-.media-bg {
-    border-radius: 11px;
-}
-.media-style-img {
-    background: linear-gradient(to bottom, transparent, rgba(0,0,0,1));
-    border-radius: 9px;
-}
-.media-text {
-    color: white;
-    font-weight: bold;
-    margin-top: 50px;
-    margin-left: 0px;
+scale.vol       { @include slider($accent); }
+scale.bri       { @include slider($yellow); }
+scale.vol-muted { @include slider($fg-dim); }
+
+// ── Media ──
+.media-bg        { border-radius: 5px; }
+.media-style-img { background: linear-gradient(to bottom, transparent, $bg); border-radius: 4px; }
+.media-text      { color: $fg; font-weight: bold; margin-top: 50px; }
+
+// ── Calendar (GTK calendar widget) ──
+calendar {
+  background: transparent;
+  padding: 4px;
+  &.header      { color: $accent; font-weight: bold; }
+  &.button      { color: $fg-dim; }
+  &.highlight   { color: $fg-dim; font-weight: bold; }   // weekday names
+  &:selected    { background: $sel; color: $fg; border-radius: 4px; }  // today
+  &:indeterminate { color: $surface; }                   // days of other months
 }
