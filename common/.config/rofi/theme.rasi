@@ -1,0 +1,64 @@
+* {
+    bg:      #141414;
+    bg-alt:  #1e1e1e;
+    fg:      #d5d4d0;
+    fg-dim:  #747474;
+    accent:  #7daad1;
+    sel:     #2a3744;
+    urgent:  #d0938d;
+
+    background-color: transparent;
+    text-color:       @fg;
+    font:             "JetBrainsMono Nerd Font 12";
+}
+
+window {
+    width:            600px;
+    background-color: @bg;
+    border:           2px;
+    border-color:     @accent;
+    border-radius:    6px;
+}
+
+mainbox {
+    padding:  12px;
+    spacing:  10px;
+    children: [ inputbar, message, listview ];
+}
+
+inputbar {
+    padding:          8px 12px;
+    spacing:          8px;
+    background-color: @bg-alt;
+    border-radius:    4px;
+    children:         [ prompt, entry ];
+}
+
+prompt { text-color: @accent; }
+entry  { placeholder: "Search"; placeholder-color: @fg-dim; cursor: text; }
+
+message { padding: 8px 12px; background-color: @bg-alt; border-radius: 4px; }
+textbox { text-color: @fg; }
+
+listview {
+    lines:        8;
+    columns:      1;
+    spacing:      2px;
+    fixed-height: true;
+    scrollbar:    false;
+}
+
+element {
+    padding:       6px 12px;
+    spacing:       10px;
+    border-radius: 4px;
+}
+element normal.normal, element alternate.normal     { background-color: transparent; text-color: @fg; }
+element selected.normal                             { background-color: @sel;        text-color: @fg; }
+element normal.active, element alternate.active     { text-color: @accent; }
+element selected.active                             { background-color: @sel; text-color: @accent; }
+element normal.urgent, element alternate.urgent     { text-color: @urgent; }
+element selected.urgent                             { background-color: @sel; text-color: @urgent; }
+
+element-icon { size: 1.2em; background-color: inherit; }
+element-text { vertical-align: 0.5; background-color: inherit; text-color: inherit; }
