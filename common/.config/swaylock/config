@@ -8,12 +8,12 @@ fade-in=0.2
 
 clock
 timestr=%H:%M
-datestr=%A %d %B
+datestr=%a %d %b
 font=JetBrainsMono Nerd Font
 font-size=24
 
 indicator
-indicator-radius=110
+indicator-radius=120
 indicator-thickness=8
 indicator-caps-lock
 
