@@ -1,2 +1,3 @@
 *.bak
 common/.config/fish/fish_variables
+common/.config/nvim/.claude/
